@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <winsock2.h> // Padrao para sockets no windows
 
+// Socket eh como um telefone. O primeiro liga, espera, pode receber a resposta, conversa
+// se despedem e então desligam os telefones.
+
 // Comando para o compilador do VS Code vincular a biblioteca fisica de rede
 #pragma comment(lib, "ws2_32.lib") 
 
@@ -62,6 +65,11 @@ int main(){
         return 1;
     }
     else printf("Novo socket criado!\n");
+
+    char buffer[1024];
+    // recv() limpa os dados que o curl enviou. se nao o windows reseta a conexao ao fechar
+    recv(novo_socket, buffer, 1024, 0);
+    printf("Pedido recebido do cliente!\n");
 
     char msg[] = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nConnection: close\r\n\r\nOla! voce se conectou.\n";
     int size = sizeof(msg) - 1; // Tiramos o '\0';
