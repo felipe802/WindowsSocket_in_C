@@ -98,3 +98,8 @@ int main(){
 
     return 0;
 }
+
+// O http eh uma via de mao dupla. o curl envia o pedido (GET) do endereco e o servidor responde. o buffer recebe o pedido do curl. Esse eh o protcocolo TCP
+// TCP eh a camada de transporte (socket, bind, listen, accept...)
+// HTTP eh o conteudo, a camada de aplicacao (char msg[] = ...)
+
